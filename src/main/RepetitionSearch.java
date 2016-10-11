@@ -1,5 +1,6 @@
 package main;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -7,7 +8,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 
-import main.Methods;
+import essentials.Essentials;
 
 /**
  * 
@@ -18,24 +19,20 @@ import main.Methods;
  *
  */
 public class RepetitionSearch {
-	static String Input;
-	static int l;
-	static int k;
 
-	public ConcurrentHashMap<String, Integer>[] searchRepetitions(String path,
-			int l, int k) throws IOException {
-		Input = Methods.loadFile(path);
+	public static ConcurrentHashMap<String, Integer>[] searchRepetitions(
+			String data, int l, int k) throws IOException {
 		int time = (int) System.currentTimeMillis();
 		@SuppressWarnings("unchecked")
-		ConcurrentHashMap<String, Integer>[] map2 = new ConcurrentHashMap[(Input
+		ConcurrentHashMap<String, Integer>[] map2 = new ConcurrentHashMap[(data
 				.length() - (l - 1))];
-		int length = (Input.length() - (l - 1));
+		int length = (data.length() - (l - 1));
 		int count = 0;
 		for (int i = 0; i < length; i++) {
 			map2[i] = new ConcurrentHashMap<String, Integer>();
 			System.out.println("Suche Repetitionen mit Länge " + (i + l)
 					+ "...");
-			String[] parts = Methods.split(Input, l + i);
+			String[] parts = Methods.split(data, l + i);
 			Map<String, Integer> map = new HashMap<String, Integer>();
 			for (int e = 0; e < parts.length; e++) {
 				if (map.containsKey(parts[e])) {
@@ -87,6 +84,11 @@ public class RepetitionSearch {
 		System.out.println("\nDie Berechnung dauerte"
 				+ ((int) (System.currentTimeMillis() - time)) + "ms");
 		return map2;
+	}
+
+	public static void main(String[] args) throws IOException {
+		RepetitionSearch.searchRepetitions(Essentials.readFile(new File(
+				"C:\\Users\\Maximilian\\Desktop\\Unbenannt2.png")), 5, 5);
 	}
 
 	public RepetitionSearch() {
