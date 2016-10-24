@@ -59,9 +59,9 @@ public class Compress {
 	 * @throws IOException
 	 */
 	public static void main(String[] args) throws IOException {
-		new Compress(new File("C:\\Users\\Maximilian\\Desktop\\zzyzx.png"), 10,
-				10, "C:\\Users\\Maximilian\\Desktop\\");
-		String p = "C:\\Users\\Maximilian\\Desktop\\Torshammer\\Torshammer 1.0\\";
+		new Compress(new File("C:\\Users\\Maximilian\\Desktop\\zzyzx.png"), 20,
+				20, "C:\\Users\\Maximilian\\Desktop\\");
+		String p = "C:\\Users\\Maximilian\\Desktop\\";
 		decompress(new File(p + "dictionary.properties"), new File(p
 				+ "text.txt"), new File(p + "output.png"));
 
