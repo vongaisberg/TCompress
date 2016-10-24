@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
 
 import essentials.Essentials;
@@ -20,8 +21,8 @@ import essentials.Essentials;
  */
 public class RepetitionSearch {
 
-	public static ConcurrentHashMap<String, Integer>[] searchRepetitions(
-			String data, int l, int k) throws IOException {
+	public static Properties searchRepetitions(String data, int l, int k)
+			throws IOException {
 		int time = (int) System.currentTimeMillis();
 		@SuppressWarnings("unchecked")
 		ConcurrentHashMap<String, Integer>[] map2 = new ConcurrentHashMap[(data
@@ -74,21 +75,29 @@ public class RepetitionSearch {
 		}
 		System.out
 				.println("\n********************\nErgebnisse\n********************\n");
-
+		Properties repetitions = new Properties();
+		int count2 = 0;
 		for (int i = 0; i < count; i++) {
 			for (Entry<String, Integer> entry : map2[i].entrySet()) {
+				repetitions.put(entry.getKey(), String.valueOf(count2));
+				count2++;
 				System.out.println(entry.getKey() + " " + entry.getValue());
 			}
 
 		}
+
 		System.out.println("\nDie Berechnung dauerte"
 				+ ((int) (System.currentTimeMillis() - time)) + "ms");
-		return map2;
+		return repetitions;
 	}
 
 	public static void main(String[] args) throws IOException {
-		RepetitionSearch.searchRepetitions(Essentials.readFile(new File(
-				"C:\\Users\\Maximilian\\Desktop\\Unbenannt2.png")), 5, 5);
+		RepetitionSearch
+				.searchRepetitions(
+						Essentials
+								.readFile(new File(
+										"C:\\Users\\Maximilian\\Desktop\\Torshammer\\Torshammer 1.0\\torshammer.py")),
+						5, 5);
 	}
 
 	public RepetitionSearch() {
