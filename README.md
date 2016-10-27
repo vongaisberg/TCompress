@@ -5,4 +5,4 @@ It doesn't compress very good and it is not fast at all. It is much more a proof
 ## Dependencies
 * [Grunzwanzling/Essentials](https://github.com/Grunzwanzling/Essentials)
 
-[Grunzwanzlings Homepage](https://grunzwanzling.github.io)
+[Grunzwanzlings Homepage](http://grunzwanzling.me)
