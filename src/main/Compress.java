@@ -21,6 +21,10 @@ import essentials.Essentials;
 public class Compress {
 
 	/**
+	 * @param file The file to compress
+	 * @param l The minimum length of the repetitions
+	 * @param n The minimum number of repetition
+	 * @param output The directory to put the new files in
 	 * @throws IOException
 	 * 
 	 */
