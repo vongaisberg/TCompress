@@ -15,16 +15,35 @@ import java.util.concurrent.ConcurrentHashMap;
 import essentials.Essentials;
 
 /**
- * @author Maximilian
+ * 
+ * Uses a very simple DNA-repetition-searching algorithm to search for
+ * repetitions in files By putting these repetitions in a dictionary and
+ * replacing them with shorter placeholders you can make the resulting files
+ * smaller It is extremely slow, because the original algorithm searches for all
+ * repetitions and not just for most of them like all the other programs It is
+ * also not very effective, because I am not even really trying to store
+ * everything as small as possible Just see it as an experiment and a proof of
+ * concept
+ * 
+ * 
+ * @author <a href="http://grunzwanzling.me">Maximilian von Gaisberg
+ *         (Grunzwanzling)</a>
  *
  */
 public class Compress {
 
 	/**
-	 * @param file The file to compress
-	 * @param l The minimum length of the repetitions
-	 * @param n The minimum number of repetition
-	 * @param output The directory to put the new files in
+	 * 
+	 * Compresses files
+	 * 
+	 * @param file
+	 *            The file to compress
+	 * @param l
+	 *            The minimum length of the repetitions
+	 * @param n
+	 *            The minimum number of repetition
+	 * @param output
+	 *            The directory to put the compressed files in
 	 * @throws IOException
 	 * 
 	 */
@@ -44,6 +63,18 @@ public class Compress {
 		Essentials.printStringToFile(text, new File(output + "text.txt"));
 	}
 
+	/**
+	 * Decompresses files
+	 * 
+	 * @param dictionary
+	 *            The dictionary file
+	 * @param text
+	 *            The text file
+	 * @param output
+	 *            The uncompressed output file
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	public static void decompress(File dictionary, File text, File output)
 			throws FileNotFoundException, IOException {
 
@@ -58,10 +89,6 @@ public class Compress {
 		Essentials.printStringToFile(t, output);
 	}
 
-	/**
-	 * @param args
-	 * @throws IOException
-	 */
 	public static void main(String[] args) throws IOException {
 		new Compress(new File("C:\\Users\\Maximilian\\Desktop\\zzyzx.png"), 20,
 				20, "C:\\Users\\Maximilian\\Desktop\\");
