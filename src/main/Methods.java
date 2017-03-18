@@ -14,10 +14,8 @@ public class Methods {
 			fr = new FileReader(file);
 
 			BufferedReader br = new BufferedReader(fr);
-			String line;
-			while ((line = br.readLine()) != null) {
-				Input = Input + line;
-			}
+			for (String line = br.readLine(); line != null;)
+				Input += line;
 			br.close();
 
 			System.out.println("Loading completed");
@@ -33,11 +31,10 @@ public class Methods {
 	}
 
 	public static String[] split(String Input, int l) {
-		int length = Input.length() - (l - 1);
+		int length = Input.length() - l + 1;
 		String[] part = new String[length];
-		for (int i = 0; i < length; i++) {
+		for (int i = 0; i < length; ++i)
 			part[i] = Input.substring(i, i + l);
-		}
 		return (part);
 	}
 }

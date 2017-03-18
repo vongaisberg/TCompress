@@ -1,6 +1,3 @@
-/**
- * 
- */
 package main;
 
 import java.io.File;
@@ -34,7 +31,7 @@ public class Compress {
 
 	/**
 	 * 
-	 * Compresses files
+	 * Compress files
 	 * 
 	 * @param file
 	 *            The file to compress
@@ -54,8 +51,7 @@ public class Compress {
 				+ "dictionary.properties")), "Dictionary");
 		String text = Essentials.readFile(file);
 		for (Object ob : prop.keySet()) {
-			String replacement = ((char) 170) + prop.getProperty((String) ob)
-					+ (char) 170;
+			String replacement = (char) 170 + prop.getProperty((String) ob) + (char) 170;
 			System.out.println(replacement);
 			text = text.replace((String) ob, replacement);
 			System.out.println((String) ob);
@@ -64,7 +60,7 @@ public class Compress {
 	}
 
 	/**
-	 * Decompresses files
+	 * Decompress files
 	 * 
 	 * @param dictionary
 	 *            The dictionary file
@@ -81,20 +77,17 @@ public class Compress {
 		String t = Essentials.readFile(text);
 		Properties prop = new Properties();
 		prop.load(new FileInputStream(dictionary));
-		for (Object ob : prop.keySet()) {
-			String replacement = ((char) 170) + prop.getProperty((String) ob)
-					+ (char) 170;
-			t = t.replace(replacement, (String) ob);
-		}
+		for (Object ob : prop.keySet())
+			t = t.replace((char) 170 + prop.getProperty((String) ob) + (char) 170, (String) ob);
 		Essentials.printStringToFile(t, output);
 	}
 
 	public static void main(String[] args) throws IOException {
-		new Compress(new File("C:\\Users\\Maximilian\\Desktop\\zzyzx.png"), 20,
-				20, "C:\\Users\\Maximilian\\Desktop\\");
+		new Compress(new File("C:\\Users\\Maximilian\\Desktop\\log.txt"), 10,
+				10, "C:\\Users\\Maximilian\\Desktop\\");
 		String p = "C:\\Users\\Maximilian\\Desktop\\";
-		decompress(new File(p + "dictionary.properties"), new File(p
-				+ "text.txt"), new File(p + "output.png"));
+//		decompress(new File(p + "dictionary.properties"), new File(p
+//				+ "text.txt"), new File(p + "output.png"));
 
 	}
 }
